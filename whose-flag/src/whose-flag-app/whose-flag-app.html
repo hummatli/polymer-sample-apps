@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="whose-flag-app">
   <template>
@@ -8,12 +10,24 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
-    <!-- <app-header>
+    <!-- <h2>Hello [[prop1]]!</h2> -->
+    <app-header>
       <app-toolbar>
         <div main-title>Whose flag is this?</div>
       </app-toolbar>
-    </app-header> -->
+    </app-header>
+    <div id="flag-image-container">
+      <iron-image 
+        id="flag-image"
+        preload fade src="data/svg/BR.svg">
+      </iron-image>
+      <div id="answer-button-container">
+        <paper-button id="optionA" class="answer">Brazil</paper-button>
+        <paper-button id="optionB" class="answer">Uruguay</paper-button>
+      </div>
+      <p>A message will go here, telling you if you got it right.</p>
+      <paper-button class="another" id="another">Another!</paper-button> 
+    </div>
   </template>
 
   <script>
@@ -25,10 +39,10 @@
       static get is() { return 'whose-flag-app'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'whose-flag-app'
-          }
+          // prop1: {
+          //   type: String,
+          //   value: 'whose-flag-app'
+          // }
         };
       }
     }

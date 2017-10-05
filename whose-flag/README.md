@@ -1,4 +1,4 @@
-# \<whose-flag\> - Match flags to their countries!
+# Whose-Flag - Match flags to their countries!
 
 This is a Polymer project created on Polymer learning process by this [Codelab](https://codelabs.developers.google.com/codelabs/whose-flag/index.html?index=..%2F..%2Fpolymer-summit-2017&viewga=UA-39334307-12#0) 
 

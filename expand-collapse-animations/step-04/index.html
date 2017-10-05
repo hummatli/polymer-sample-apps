@@ -1,0 +1,107 @@
+<!--
+@license
+Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>dropdown-menu</title>
+
+  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="bower_components/polymer/lib/elements/custom-style.html">
+  <link rel="import" href="dropdown-menu.html">
+
+  <custom-style>
+    <style>
+      body {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 10px;
+        font-family: 'Roboto', Helvetica, sans-serif;
+      }
+
+      .item {
+        padding: 10px;
+        width: 160px;
+        box-sizing: border-box;
+        line-height: 24px;
+      }
+
+      dropdown-menu.top-right {
+        --dropdown-menu-content-left: auto;
+        --dropdown-menu-content-right: 0;
+        --dropdown-menu-content-transform-origin: top right;
+      }
+
+      dropdown-menu.bottom-right {
+        --dropdown-menu-content-left: auto;
+        --dropdown-menu-content-right: 0;
+        --dropdown-menu-content-top: auto;
+        --dropdown-menu-content-bottom: 0;
+        --dropdown-menu-content-transform-origin: bottom right;
+      }
+
+      dropdown-menu.top-center {
+        --dropdown-menu-content-left: calc(50% - 80px);
+        --dropdown-menu-content-transform-origin: top center;
+        --dropdown-menu-content-animation-duration: 500ms;
+      }
+
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <h1>dropdown-menu</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta maxime nisi, iusto beatae quibusdam alias hic nobis odit
+    quidem accusamus ab quas vero nulla ea. Adipisci quaerat, asperiores alias eaque.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta maxime nisi, iusto beatae quibusdam alias hic nobis odit
+    quidem accusamus ab quas vero nulla ea. Adipisci quaerat, asperiores alias eaque.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta maxime nisi, iusto beatae quibusdam alias hic nobis odit
+    quidem accusamus ab quas vero nulla ea. Adipisci quaerat, asperiores alias eaque.</p>
+  <dropdown-menu>
+    <button slot="trigger">top-left</button>
+    <div class="item">item 1</div>
+    <div class="item">item 2</div>
+    <div class="item">item 3</div>
+    <div class="item">item 4</div>
+    <div class="item">item 5</div>
+  </dropdown-menu>
+  <dropdown-menu class="top-right">
+    <button slot="trigger">top-right</button>
+    <div class="item">item 1</div>
+    <div class="item">item 2</div>
+    <div class="item">item 3</div>
+    <div class="item">item 4</div>
+    <div class="item">item 5</div>
+  </dropdown-menu>
+  <dropdown-menu class="bottom-right">
+    <button slot="trigger">bottom-right</button>
+    <div class="item">item 1</div>
+    <div class="item">item 2</div>
+    <div class="item">item 3</div>
+    <div class="item">item 4</div>
+    <div class="item">item 5</div>
+  </dropdown-menu>
+  <dropdown-menu class="top-center">
+    <button slot="trigger">top-center</button>
+    <div class="item">item 1</div>
+    <div class="item">item 2</div>
+    <div class="item">item 3</div>
+    <div class="item">item 4</div>
+    <div class="item">item 5</div>
+  </dropdown-menu>
+</body>
+
+</html>

@@ -1,0 +1,331 @@
+<!--
+@license
+Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id="dropdown-menu">
+  <template>
+    <style>
+       :host {
+        display: inline-block;
+        position: relative;
+      }
+
+      #trigger {
+        cursor: pointer;
+      }
+
+      #contentWrapper {
+        z-index: 1;
+        position: absolute;
+        top: var(--dropdown-menu-content-top, 0);
+        left: var(--dropdown-menu-content-left, 0);
+        bottom: var(--dropdown-menu-content-bottom, auto);
+        right: var(--dropdown-menu-content-right, auto);
+        background: var(--dropdown-menu-content-background, white);
+        box-shadow: var(--dropdown-menu-box-content-shadow, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2));
+        
+        overflow: hidden;
+        contain: content;
+        will-change: opacity, transform;
+        transform-origin: var(--dropdown-menu-content-transform-origin, top left);
+        animation-duration: var(--dropdown-menu-content-animation-duration, 200ms);
+      }
+
+      #contentWrapper:not(.opened):not(.animating) {
+        display: none;
+      }
+
+      #contentWrapper.animating {
+        animation-name: fadeIn, expand;
+        animation-timing-function: linear, step-end;
+      }
+
+      #contentWrapper:not(.opened) {
+        animation-direction: reverse;
+      }
+
+      #contentWrapper > div {
+        contain: content;
+        will-change: transform;
+        transform-origin: var(--dropdown-menu-content-transform-origin, top left);
+        animation-duration: var(--dropdown-menu-content-animation-duration, 200ms);
+      }
+
+      #contentWrapper.animating > div {
+        animation-name: expandInverse;
+        animation-timing-function: step-end;
+      }
+
+      #contentWrapper:not(.opened) > div {
+        animation-direction: reverse;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0 }
+      }
+
+      @keyframes expand {
+        0% {
+          transform: scale(0.5, 0.5);
+        }
+        3.44828% {
+          transform: scale(0.56548, 0.56548);
+        }
+        6.89655% {
+          transform: scale(0.62431, 0.62431);
+        }
+        10.34483% {
+          transform: scale(0.67695, 0.67695);
+        }
+        13.7931% {
+          transform: scale(0.72385, 0.72385);
+        }
+        17.24138% {
+          transform: scale(0.76546, 0.76546);
+        }
+        20.68966% {
+          transform: scale(0.80217, 0.80217);
+        }
+        24.13793% {
+          transform: scale(0.8344, 0.8344);
+        }
+        27.58621% {
+          transform: scale(0.86252, 0.86252);
+        }
+        31.03448% {
+          transform: scale(0.88689, 0.88689);
+        }
+        34.48276% {
+          transform: scale(0.90787, 0.90787);
+        }
+        37.93103% {
+          transform: scale(0.92579, 0.92579);
+        }
+        41.37931% {
+          transform: scale(0.94096, 0.94096);
+        }
+        44.82759% {
+          transform: scale(0.95367, 0.95367);
+        }
+        48.27586% {
+          transform: scale(0.96421, 0.96421);
+        }
+        51.72414% {
+          transform: scale(0.97284, 0.97284);
+        }
+        55.17241% {
+          transform: scale(0.97981, 0.97981);
+        }
+        58.62069% {
+          transform: scale(0.98534, 0.98534);
+        }
+        62.06897% {
+          transform: scale(0.98965, 0.98965);
+        }
+        65.51724% {
+          transform: scale(0.99293, 0.99293);
+        }
+        68.96552% {
+          transform: scale(0.99536, 0.99536);
+        }
+        72.41379% {
+          transform: scale(0.9971, 0.9971);
+        }
+        75.86207% {
+          transform: scale(0.9983, 0.9983);
+        }
+        79.31034% {
+          transform: scale(0.99908, 0.99908);
+        }
+        82.75862% {
+          transform: scale(0.99956, 0.99956);
+        }
+        86.2069% {
+          transform: scale(0.99982, 0.99982);
+        }
+        89.65517% {
+          transform: scale(0.99994, 0.99994);
+        }
+        93.10345% {
+          transform: scale(0.99999, 0.99999);
+        }
+        96.55172% {
+          transform: scale(1, 1);
+        }
+        100% {
+          transform: scale(1, 1);
+        }
+      }
+
+      @keyframes expandInverse {
+        0% {
+          transform: scale(2, 2);
+        }
+        3.44828% {
+          transform: scale(1.76841, 1.76841);
+        }
+        6.89655% {
+          transform: scale(1.60177, 1.60177);
+        }
+        10.34483% {
+          transform: scale(1.47721, 1.47721);
+        }
+        13.7931% {
+          transform: scale(1.3815, 1.3815);
+        }
+        17.24138% {
+          transform: scale(1.3064, 1.3064);
+        }
+        20.68966% {
+          transform: scale(1.24662, 1.24662);
+        }
+        24.13793% {
+          transform: scale(1.19847, 1.19847);
+        }
+        27.58621% {
+          transform: scale(1.15939, 1.15939);
+        }
+        31.03448% {
+          transform: scale(1.12754, 1.12754);
+        }
+        34.48276% {
+          transform: scale(1.10148, 1.10148);
+        }
+        37.93103% {
+          transform: scale(1.08016, 1.08016);
+        }
+        41.37931% {
+          transform: scale(1.06274, 1.06274);
+        }
+        44.82759% {
+          transform: scale(1.04858, 1.04858);
+        }
+        48.27586% {
+          transform: scale(1.03712, 1.03712);
+        }
+        51.72414% {
+          transform: scale(1.02792, 1.02792);
+        }
+        55.17241% {
+          transform: scale(1.02061, 1.02061);
+        }
+        58.62069% {
+          transform: scale(1.01488, 1.01488);
+        }
+        62.06897% {
+          transform: scale(1.01046, 1.01046);
+        }
+        65.51724% {
+          transform: scale(1.00712, 1.00712);
+        }
+        68.96552% {
+          transform: scale(1.00466, 1.00466);
+        }
+        72.41379% {
+          transform: scale(1.00291, 1.00291);
+        }
+        75.86207% {
+          transform: scale(1.0017, 1.0017);
+        }
+        79.31034% {
+          transform: scale(1.00092, 1.00092);
+        }
+        82.75862% {
+          transform: scale(1.00044, 1.00044);
+        }
+        86.2069% {
+          transform: scale(1.00018, 1.00018);
+        }
+        89.65517% {
+          transform: scale(1.00006, 1.00006);
+        }
+        93.10345% {
+          transform: scale(1.00001, 1.00001);
+        }
+        96.55172% {
+          transform: scale(1, 1);
+        }
+        100% {
+          transform: scale(1, 1);
+        }
+      }
+
+    </style>
+
+    <div id="trigger" on-click="_open">
+      <slot name="trigger"></slot>
+    </div>
+    <div id="contentWrapper" on-animationend="_onAnimationend">
+      <div>
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+  <script>
+    class DropdownMenu extends Polymer.Element {
+
+      static get is() { return 'dropdown-menu'; }
+
+      static get properties() {
+        return {
+          opened: {
+            type: Boolean,
+            observer: '_openedChanged'
+          }
+        }
+      }
+
+      constructor() {
+        super();
+        this._onClick = this._onClick.bind(this);
+        this._onKeydown = this._onKeydown.bind(this);
+      }
+
+      _open() {
+        this.opened = true;
+      }
+
+      _openedChanged() {
+        if (this.opened) {
+          this.$.contentWrapper.classList.add('opened');
+          document.documentElement.addEventListener('click', this._onClick);
+          document.documentElement.addEventListener('keydown', this._onKeydown);
+        } else {
+          this.$.contentWrapper.classList.remove('opened');
+          document.documentElement.removeEventListener('click', this._onClick);
+          document.documentElement.removeEventListener('keydown', this._onKeydown);
+        }
+        this.$.contentWrapper.classList.add('animating');
+      }
+
+      _onAnimationend(event) {
+        if (event.target === this.$.contentWrapper) {
+          this.$.contentWrapper.classList.remove('animating');
+        }
+      }
+
+      _onClick(event) {
+        if (event.composedPath().indexOf(this) === -1) {
+          this.opened = false;
+        }
+      }
+
+      _onKeydown(event) {
+        if (event.keyCode === 27) {
+          this.opened = false;
+        }
+      }
+
+    }
+
+    customElements.define(DropdownMenu.is, DropdownMenu);
+  </script>
+</dom-module>

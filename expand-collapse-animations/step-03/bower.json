@@ -1,0 +1,7 @@
+{
+  "name": "expand-collapse-animations",
+  "private": true,
+  "dependencies": {
+    "polymer": "polymer/polymer#^2"
+  }
+}

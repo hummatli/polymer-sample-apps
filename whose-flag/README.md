@@ -2,10 +2,9 @@
 
 This is a Polymer project created on Polymer learning process by this [Codelab](https://codelabs.developers.google.com/codelabs/whose-flag/index.html?index=..%2F..%2Fpolymer-summit-2017&viewga=UA-39334307-12#0) 
 
-Project serves in [following link](https://whose-flag-10160.firebaseapp.com) 
+Project serves in [following link](https://whose-flag-10160.firebaseapp.com). Try it! 
 
-
-
+App randomly choose flag and provide to answer to it. If you push correct or wrong answer it shows to you.  
 
 # How to install
 ### Install the Polymer-CLI

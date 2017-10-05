@@ -59,13 +59,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         from { transform: scale(0.5, 0.5) }
       }
 
+      #contentWrapper > div {
+        contain: content;
+        will-change: transform;
+        transform-origin: var(--dropdown-menu-content-transform-origin, top left);
+        animation-duration: var(--dropdown-menu-content-animation-duration, 200ms);
+      }
+
+      #contentWrapper.animating > div {
+        animation-name: expandInverse;
+      }
+
+      #contentWrapper:not(.opened) > div {
+        animation-direction: reverse;
+      }
+
+      /* ... */
+
+      @keyframes expandInverse {
+        from { transform: scale(2, 2) }
+      }
+      
     </style>
 
     <div id="trigger" on-click="_open">
       <slot name="trigger"></slot>
     </div>
     <div id="contentWrapper" on-animationend="_onAnimationend">
-      <slot></slot>
+      <div>
+        <slot></slot>
+      </div>
     </div>
   </template>
   <script>

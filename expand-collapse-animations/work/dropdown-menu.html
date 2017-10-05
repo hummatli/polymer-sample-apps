@@ -45,6 +45,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       
       #contentWrapper.animating {
         animation-name: fadeIn, expand;
+        animation-timing-function: linear, step-end;
       }
       
       #contentWrapper:not(.opened) {
@@ -54,9 +55,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       @keyframes fadeIn {
         from { opacity: 0 }
       }
-      
+
       @keyframes expand {
-        from { transform: scale(0.5, 0.5) }
+        0% { transform: scale(0.5, 0.5); }
+        3.44828% { transform: scale(0.56548, 0.56548); }
+        /*...*/
+        96.55172% { transform: scale(1, 1); }
+        100% { transform: scale(1, 1); }
+      }
+
+      @keyframes expandInverse {
+        0% { transform: scale(2, 2); }
+        3.44828% { transform: scale(1.76841, 1.76841); }
+        /*...*/
+        96.55172% { transform: scale(1, 1); }
+        100% { transform: scale(1, 1); }
       }
 
       #contentWrapper > div {
@@ -68,6 +81,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       #contentWrapper.animating > div {
         animation-name: expandInverse;
+        animation-timing-function: step-end;
       }
 
       #contentWrapper:not(.opened) > div {
@@ -76,10 +90,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       /* ... */
 
-      @keyframes expandInverse {
-        from { transform: scale(2, 2) }
-      }
-      
     </style>
 
     <div id="trigger" on-click="_open">

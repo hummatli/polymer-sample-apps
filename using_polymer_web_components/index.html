@@ -13,6 +13,7 @@
     <!-- TODO: Include the Polymer web components you want to use -->
     <link rel="import" href="bower_components/paper-button/paper-button.html">
     <link rel="import" href="bower_components/paper-input/paper-input.html">
+    <link rel="import" href="bower_components/paper-toast/paper-toast.html">
     
     <style>
         .narrow {
@@ -59,10 +60,21 @@
         </div>
         <!-- TODO: Add Toast -->
     </div>
+    <paper-toast id="toast1"></paper-toast>
 
     <script>
         window.addEventListener("load", e => {
             // TODO: Add event handlers to show toast message
+            document.querySelector("#btn1").addEventListener("click", e => {
+                const toast = document.querySelector("#toast1");
+                toast.text = "Submit pressed!";
+                toast.open();
+            });
+            document.querySelector("#btn2").addEventListener("click", e => {
+                const toast = document.querySelector("#toast1");
+                toast.text = "Cancel pressed!";
+                toast.open();
+            });
         })
     </script>
 </body>

@@ -1,0 +1,36 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<!-- TODO: the dom-module tag is used to define a component in Polymer -->
+<dom-module id="message-banner">
+    <template>
+        <!-- TODO: define the appearance using CSS -->
+
+        <!-- TODO: the HTML structure is defined here -->
+        <div id='content' class="message">
+            <span id='closebox'>[X] </span>
+            <slot>This is a default message</slot>
+        </div>
+
+    </template>
+    <script>
+        class MessageBanner extends Polymer.Element {
+            constructor() {
+                super(); // always call super() first
+            }
+
+            // TODO: Polymer method that returns the name of the component
+            static get is() {
+                return "message-banner";
+            }
+
+            // TODO: Polymer method that defines the component's properties
+
+
+            // TODO: Polymer function called before the element is attached to the page.
+
+        }
+        // TODO: Define the element
+        customElements.define(MessageBanner.is, MessageBanner);
+        
+    </script>
+</dom-module>

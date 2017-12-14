@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Creating a Custom Polymer Element</title>
+    <!-- Import our style definitions -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the web components polyfills -->
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- TODO: import our custom polymer element -->
+    <link rel="import" href="message-banner.html">
+
+    <!-- TODO: customize the appearance of the message banner with CSS variables -->
+
+</head>
+
+<body>
+    <h1>Creating a Custom Element</h1>
+    <div id="content">
+        <p>Polymer makes it easy to create your own elements. This example shows how to create
+            a custom message banner element that is used in the page via a <code>message-banner</code>
+            tag. 
+        </p>
+        <p>It contains its own behaviors and styling and can be customized with CSS parameters.</p>
+        <div id="example">
+            <!-- this is the message-banner element in use -->
+            <message-banner visible id="banner">Message banner content message</message-banner>
+
+            <p>This button programmatically shows and hides the message-banner</p>
+            <button id="btn">Toggle Banner</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", e => {
+            // TODO: Programmatically show and hide the banner by setting a property
+            document.getElementById("btn").addEventListener("click", evt => {
+                document.getElementById("banner").visible = !document.getElementById("banner").visible;
+            });
+
+            // TODO: add a listener for the visibility changed property
+            document.getElementById("banner").addEventListener("visible-changed", evt => {
+                console.log("Visibility changed: " + evt.target.visible);
+            });
+        });
+    </script>
+</body>
+
+</html>

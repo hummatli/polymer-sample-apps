@@ -4,7 +4,34 @@
 <dom-module id="message-banner">
     <template>
         <!-- TODO: define the appearance using CSS -->
+        <style>
+            :host {
+                background: var(--message-banner-background, cornsilk);
+                border: 1pt solid var(--message-banner-border, goldenrod);
+                margin: 0;
+                max-height: 400px;
+                padding: 15px;
+                position: relative;
+                top: 0;
+                right: 0;
+                display: none;
+            }
 
+            :host([visible]) {
+                display: block;
+            }
+
+            :host #closebox {
+                cursor: pointer;
+            }
+
+            :host([type="critical"]) {
+                background: var(--message-banner-background, red);
+                border: 1pt solid var(--message-banner-border, maroon);
+                color: white;
+                font-weight: 600;
+            }
+        </style>
         <!-- TODO: the HTML structure is defined here -->
         <div id='content' class="message">
             <span id='closebox'>[X] </span>

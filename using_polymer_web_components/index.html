@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Incorporating Polymer Elements</title>
+    <!-- Import our style definitions -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- TODO: Include the polyfills for non-compliant browsers -->
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    
+    <!-- TODO: Include the Polymer web components you want to use -->
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
+    
+    <style>
+        .narrow {
+            max-width: 700px;
+        }
+        .narrow div {
+            margin-bottom: 5pt;
+        }
+
+        paper-button {
+            background-color: white;
+            margin-bottom: 5pt;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Using Polymer Web Components</h1>
+    <div id="content">
+        <p>This example demonstrates how to use Polymer web components in a regular web page.</p>
+        <p>The steps involved to use Polymer are:</p>
+        <ol>
+            <li>Install the Polymer CLI tools</li>
+            <li>Install the Polymer components you want to use via Bower, NPM, Yarn, etc.</li>
+            <li>Include the webcomponents-loader.js file to polyfill older browsers</li>
+            <li>Import the Polymer file into your page</li>
+            <li>Import any components you want to use, then use the tags in the page</li>
+        </ol>
+        
+        <div id="example" class="narrow">
+            <p>Please enter your information:</p>
+
+            <div>
+                <label for="fname">First Name: </label>
+                <paper-input type="text" placeholder="First name" id="fname">
+            </div>
+            <div>
+                <label for="lname">Last Name: </label>
+                <paper-input type="text" placeholder="Last Name" id="lname">
+            </div>
+
+            <paper-button id="btn1">Submit</paper-button>
+            <paper-button id="btn2">Cancel</paper-button>
+        </div>
+        <!-- TODO: Add Toast -->
+    </div>
+
+    <script>
+        window.addEventListener("load", e => {
+            // TODO: Add event handlers to show toast message
+        })
+    </script>
+</body>
+
+</html>

@@ -19,6 +19,12 @@
             --message-banner-background: skyblue;
             --message-banner-border: blue;
         }
+
+        message-banner[type="critical"] {
+            --message-banner-background: coral;
+            --message-banner-border: crimson;
+            color: ivory;
+        }
     </style>
 </head>
 
@@ -32,7 +38,7 @@
         <p>It contains its own behaviors and styling and can be customized with CSS parameters.</p>
         <div id="example">
             <!-- this is the message-banner element in use -->
-            <message-banner visible id="banner" class="blue">Message banner content message</message-banner>
+            <message-banner visible id="banner" type="critical">Message banner content message</message-banner>
 
             <p>This button programmatically shows and hides the message-banner</p>
             <button id="btn">Toggle Banner</button>

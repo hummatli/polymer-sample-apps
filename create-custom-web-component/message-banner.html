@@ -51,9 +51,27 @@
             }
 
             // TODO: Polymer method that defines the component's properties
-
+            static get properties() {
+                return {
+                    visible: {
+                        type: Boolean,
+                        value: false,
+                        reflectToAttribute: true,
+                        notify: true
+                    }
+                }
+            }
 
             // TODO: Polymer function called before the element is attached to the page.
+            ready() {
+                super.ready();
+
+                const closebox = this.$.closebox;
+                closebox.addEventListener("click", e => {
+                    this.visible = false;
+                    console.log("message-banner closed");
+                });
+            }
 
         }
         // TODO: Define the element

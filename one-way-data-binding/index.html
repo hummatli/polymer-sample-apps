@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Binding in Polymer</title>
+    <!-- Import our style definitions -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the web components polyfills -->
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- import our custom polymer element -->
+    <link rel="import" href="temp-card.html">
+</head>
+
+<body>
+    <h1>One-way Data Binding in Polymer</h1>
+    <div id="content">
+        <p>One-way data bindings are defined with square brackets: [[<em>prop-name</em>]]
+        </p>
+        <p>The data flows from the internal property of the element down to the locations
+            where the square brackets reference the property name.
+        </p>
+        <div id="example">
+            <temperature-card id="temp1"></temperature-card>
+
+            <button onclick="setTemp(32)">Set to 32</button>
+            <button onclick="setTemp(68)">Set to 68</button>
+            <button onclick="setTemp(104)">Set to 104</button>
+        </div>
+    </div>
+    <script>
+        function setTemp(newTemp) {
+            // TODO: change the temp property of the temperature-card
+            document.querySelector("#temp1").temp = newTemp;
+        }
+    </script>
+</body>
+
+</html>

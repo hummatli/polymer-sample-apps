@@ -1,0 +1,32 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+
+<dom-module id='temperature-card'>
+    <template>
+        <style>
+            div {
+                margin-bottom: 5pt;
+            }
+        </style>
+        <div>
+            <!-- TODO: add a one-way binding for the temp property -->
+            Current temperature: [[temp]]
+        </div>
+    </template>
+    <script>
+        class TemperatureCard extends Polymer.Element {
+            static get is() {
+                return "temperature-card";
+            }
+            static get properties() {
+                return {
+                    temp: Number
+                }
+            }
+            constructor() {
+                super();
+                this.temp = 68;
+            }
+        }
+        customElements.define(TemperatureCard.is, TemperatureCard);
+    </script>
+</dom-module>

@@ -1,0 +1,7 @@
+{
+  "name": "scaffold-polymer-application",
+  "short_name": "scaffold-polymer-application",
+  "description": "This is sample polymer app",
+  "start_url": "/",
+  "display": "standalone"
+}

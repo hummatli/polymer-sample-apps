@@ -11,6 +11,10 @@
             <!-- TODO: add a one-way binding for the temp property -->
             Current temperature: [[temp]]
         </div>
+        <div>
+            <!-- Two way binding -->
+            <input type="number" name="thetemp" value="{{temp::input}}">
+        </div>
     </template>
     <script>
         class TemperatureCard extends Polymer.Element {

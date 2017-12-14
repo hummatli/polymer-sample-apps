@@ -7,9 +7,9 @@
                 margin-bottom: 5pt;
             }
         </style>
-        <div>
+        <div style$="color: [[tempColor]]">
             <!-- TODO: add a one-way binding for the temp property -->
-            Current temperature: [[temp]]
+            Current temperature: [[temp]]F , Computed temperature: [[tempCelsius]]C
         </div>
         <div>
             <!-- Two way binding -->
@@ -23,12 +23,32 @@
             }
             static get properties() {
                 return {
-                    temp: Number
+                    temp: Number,
+                    tempCelsius: {
+                        type: Number,
+                        computed: '_convertToCelsius(temp)'
+                    },
+                    tempColor: {
+                        type: String,
+                        computed: '_computeStyle(temp)'
+                    }
                 }
             }
             constructor() {
                 super();
                 this.temp = 68;
+            }
+
+            _convertToCelsius(temp) {
+                return ((temp -32) * (5/9));
+            }
+
+            _computeStyle(temp) {
+                if(temp < 65) {
+                    return 'blue';
+                } else {
+                    return 'red';
+                }
             }
         }
         customElements.define(TemperatureCard.is, TemperatureCard);
